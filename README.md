@@ -25,12 +25,6 @@ This repository contains code and data for our study where we integrate deep rep
 - **RQ3:** How effective are unsupervised deep learning embeddings (e.g., from a variational autoencoder) at representing phenotypic differences, relative to supervised CNN features? Can combining unsupervised embeddings with CellProfiler features enhance the separation of perturbation effects?
 - **RQ4:** Are the CNN models interpretable in terms of biological relevance? For example, can we identify which cellular structures the model focuses on for different perturbations, and do these correspond to known phenotypic changes?
 
-## Research Questions and Summary of Findings
-Our study aims to answer:
-1. Whether deep neural network features can effectively capture phenotypic differences in cell images relative to traditional CellProfiler features.
-2. Whether the fusion of deep and classical features improves classification and clustering of treatments.
-3. How unsupervised embeddings from models like VAEs compare to supervised CNN embeddings in reflecting treatment-induced variations.
-4. The biological interpretability of the CNN’s predictions using methods like Grad-CAM.
 
 Our experiments encompass:
 - **Data Integration (Step 0):** Merging experimental metadata and CellProfiler outputs yields a dataset of 2,867 aggregated images spanning 250 unique treatment classes.
