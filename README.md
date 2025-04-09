@@ -33,7 +33,14 @@ Our experiments encompass:
 - **Embedding Visualization and Unsupervised Analysis (Step 3 & Step 4):** CNN embeddings and VAE latent representations were visualized via UMAP, and their quality was assessed using silhouette scores and mAP. Fusion with CellProfiler features improved unsupervised clustering metrics for VAE embeddings but had mixed effects for CNN embeddings.
 - **Model Interpretability (Step 5):** Grad-CAM analysis illustrated that the CNN attends to biologically meaningful regions. Quantitative metrics (e.g., mean activation, coverage area) further elucidated the relationship between the network's focus and treatment effects.
 
-Overall, our findings indicate that while deep representations alone offer improved classification over traditional methods, the addition of engineered features (CellProfiler) yields complementary benefits, especially in unsupervised settings. This integrative approach enhances both classification performance and the biological interpretability of the model's predictions.
+## Brief Summary of Results
+- **Classification**: A CNN fine-tuned on microscopy images generally outperforms logistic regression on purely handcrafted features, though the task is challenging (250 classes with limited samples each).
+- **Feature Fusion**: Combining deep features with CellProfiler features modestly improves both accuracy and clustering metrics.  
+- **VAE vs. CNN**: Unsupervised VAE embeddings alone do not strongly align with drug treatments, but they become more discriminative when fused with CellProfiler features.  
+- **Interpretability (Grad-CAM)**: The CNN focuses on biologically relevant structures (e.g., nuclei, cytoplasm) for certain perturbations, providing interpretable insights into how treatments alter cell morphology.
+
+Overall, the results suggest that multi-modal feature integration can yield more robust phenotypic characterization than either deep or handcrafted features alone, and that interpretability methods like Grad-CAM help validate and explain these findings.
+
 
 *For further details, please refer to the respective sections in our paper and the accompanying figures and tables within the document.*
 
