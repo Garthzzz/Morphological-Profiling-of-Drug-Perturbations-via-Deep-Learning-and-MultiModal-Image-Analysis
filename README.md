@@ -1,13 +1,9 @@
 # Morphological Profiling of Drug Perturbations via Deep Learning and Multi-Modal Image Analysis
 
+**Note:** This project and dataset are based on the study “Three million images and morphological profiles of cells treated with matched chemical and genetic perturbations” (see citation below). The foundational work described in that paper inspired our approach to integrate deep learning representations with classical CellProfiler features for enhanced phenotypic profiling.
+
 ## Introduction
 This project explores how to extract and interpret phenotypic signals from high-content cell imaging data subjected to various drug (chemical) perturbations. The primary goal is to evaluate different representations of cell morphology—ranging from handcrafted CellProfiler features to deep neural network embeddings—and investigate how well they can distinguish and characterize phenotypic effects.
-
-The key research questions are:
-1. **RQ1**: Can image-based features capture and distinguish the phenotypic effects of different perturbations? In particular, how do modern deep learning features compare to traditional handcrafted features in classifying treatments from cell images?
-2. **RQ2**: Does integrating CellProfiler-derived features with deep neural network representations improve the accuracy or consistency of phenotypic classification and clustering? What additional value (if any) do classical features provide when combined with deep features?
-3. **RQ3**: How effective are unsupervised deep learning embeddings (e.g., variational autoencoders) at representing phenotypic differences, relative to supervised CNN features? Can combining unsupervised embeddings with CellProfiler features enhance the separation of perturbation effects?
-4. **RQ4**: Are the CNN models interpretable in terms of biological relevance? For example, can we identify which cellular structures the model focuses on for different perturbations, and do these correspond to known phenotypic changes?
 
 ## Repository Contents
 - **`code.ipynb`**  
@@ -21,12 +17,32 @@ The key research questions are:
   A folder intended for saving or storing representative output figures (e.g., Grad-CAM heatmaps, UMAP plots).
 
 
-## Brief Summary of Results
-- **Classification**: A CNN fine-tuned on microscopy images generally outperforms logistic regression on purely handcrafted features, though the task is challenging (250 classes with limited samples each).
-- **Feature Fusion**: Combining deep features with CellProfiler features modestly improves both accuracy and clustering metrics.  
-- **VAE vs. CNN**: Unsupervised VAE embeddings alone do not strongly align with drug treatments, but they become more discriminative when fused with CellProfiler features.  
-- **Interpretability (Grad-CAM)**: The CNN focuses on biologically relevant structures (e.g., nuclei, cytoplasm) for certain perturbations, providing interpretable insights into how treatments alter cell morphology.
+## Project Overview
+This repository contains code and data for our study where we integrate deep representations derived from convolutional neural networks (CNNs) and variational autoencoders (VAEs) with traditional handcrafted features extracted via CellProfiler. The goal is to decode phenotypic effects induced by different drug treatments (and genetic perturbations) in high-content cell imaging assays. Our experiments address the following key research questions:
 
-Overall, the results suggest that multi-modal feature integration can yield more robust phenotypic characterization than either deep or handcrafted features alone, and that interpretability methods like Grad-CAM help validate and explain these findings.
+- **RQ1:** Can image-based features capture and distinguish the phenotypic effects of different perturbations? In particular, how do modern deep learning features compare to traditional handcrafted features in classifying treatments from cell images?
+- **RQ2:** Does integrating CellProfiler-derived features with deep neural network representations improve the accuracy or consistency of phenotypic classification and clustering? In other words, what additional value (if any) do the classical features provide when combined with deep features?
+- **RQ3:** How effective are unsupervised deep learning embeddings (e.g., from a variational autoencoder) at representing phenotypic differences, relative to supervised CNN features? Can combining unsupervised embeddings with CellProfiler features enhance the separation of perturbation effects?
+- **RQ4:** Are the CNN models interpretable in terms of biological relevance? For example, can we identify which cellular structures the model focuses on for different perturbations, and do these correspond to known phenotypic changes?
+
+## Research Questions and Summary of Findings
+Our study aims to answer:
+1. Whether deep neural network features can effectively capture phenotypic differences in cell images relative to traditional CellProfiler features.
+2. Whether the fusion of deep and classical features improves classification and clustering of treatments.
+3. How unsupervised embeddings from models like VAEs compare to supervised CNN embeddings in reflecting treatment-induced variations.
+4. The biological interpretability of the CNN’s predictions using methods like Grad-CAM.
+
+Our experiments encompass:
+- **Data Integration (Step 0):** Merging experimental metadata and CellProfiler outputs yields a dataset of 2,867 aggregated images spanning 250 unique treatment classes.
+- **Traditional Baseline (Step 1):** Logistic Regression on PCA-reduced image features (with and without CellProfiler features) achieved classification accuracies around 15–17%, establishing a baseline.
+- **CNN Fine-Tuning (Step 2):** A ResNet-18 model fine-tuned on cell images reached ~20% validation accuracy, demonstrating that the deep network captures more discriminative image representations.
+- **Embedding Visualization and Unsupervised Analysis (Step 3 & Step 4):** CNN embeddings and VAE latent representations were visualized via UMAP, and their quality was assessed using silhouette scores and mAP. Fusion with CellProfiler features improved unsupervised clustering metrics for VAE embeddings but had mixed effects for CNN embeddings.
+- **Model Interpretability (Step 5):** Grad-CAM analysis illustrated that the CNN attends to biologically meaningful regions. Quantitative metrics (e.g., mean activation, coverage area) further elucidated the relationship between the network's focus and treatment effects.
+
+Overall, our findings indicate that while deep representations alone offer improved classification over traditional methods, the addition of engineered features (CellProfiler) yields complementary benefits, especially in unsupervised settings. This integrative approach enhances both classification performance and the biological interpretability of the model's predictions.
+
+*For further details, please refer to the respective sections in our paper and the accompanying figures and tables within the document.*
 
 ---
+
+
