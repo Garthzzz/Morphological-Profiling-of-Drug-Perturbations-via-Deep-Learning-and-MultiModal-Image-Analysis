@@ -1,6 +1,6 @@
 # Morphological Profiling of Drug Perturbations via Deep Learning and Multi-Modal Image Analysis
 
-**Note:** This project and dataset are based on the study “Three million images and morphological profiles of cells treated with matched chemical and genetic perturbations” (see citation below). The foundational work described in that paper inspired our approach to integrate deep learning representations with classical CellProfiler features for enhanced phenotypic profiling.
+**Note:** This project and dataset are based on the study “Three million images and morphological profiles of cells treated with matched chemical and genetic perturbations”. The foundational work described in that paper inspired our approach to integrate deep learning representations with classical CellProfiler features for enhanced phenotypic profiling.
 
 ## Introduction
 This project explores how to extract and interpret phenotypic signals from high-content cell imaging data subjected to various drug (chemical) perturbations. The primary goal is to evaluate different representations of cell morphology—ranging from handcrafted CellProfiler features to deep neural network embeddings—and investigate how well they can distinguish and characterize phenotypic effects.
